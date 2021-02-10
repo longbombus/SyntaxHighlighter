@@ -1,0 +1,39 @@
+{
+  "timeZone": "UTC",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/script.locale",
+    "https://www.googleapis.com/auth/presentations.currentonly"
+  ],
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Slides",
+        "serviceId": "slides",
+        "version": "v1"
+      }
+    ]
+  },
+  "addOns": {
+    "common": {
+      "homepageTrigger": {
+        "runFunction": "showMain",
+        "enabled": true
+      },
+      "layoutProperties": {
+        "primaryColor": "#36424a",
+        "secondaryColor": "#42a1f5"
+      },
+      "logoUrl": "https://assets.gitlab-static.net/uploads/-/system/project/avatar/23725124/Triangle__2_.png",
+      "name": "Syntax Highlighter",
+      "openLinkUrlPrefixes": [
+        "https://script.google.com/a/google.com/d/"
+      ],
+      "useLocaleFromApp": true
+    },
+    "slides": {
+    }
+  }
+}
