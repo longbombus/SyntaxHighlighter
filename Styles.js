@@ -9,7 +9,7 @@ const codeStyles = Object.freeze({
   //   }
   // }
 
-  monokai: {
+  dark: {
     _backgroundColor: incapsulateColor(paletteMonokai.Background, 'color'),
     _default: {foregroundColor: incapsulateColor(paletteMonokai.Foreground)},
 
