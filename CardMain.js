@@ -7,6 +7,7 @@ function createCardMain(event)
     .addWidget(createLanguagesDropdown())
     .addWidget(createStylesDropdown())
     .addWidget(createFontsDropdown());
+  );
 
   builder.addSection(optionsSection);
   
