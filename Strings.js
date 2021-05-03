@@ -20,6 +20,11 @@ class StringConstants
     this.language = this.localize('Programming language');
     this.style = this.localize('Style');
     this.font = this.localize('Font');
+    
+    this.shape = this.localize('Shape');
+    this.shape_none = this.localize('None');
+    this.shape_rect = this.localize('Rectangle');
+    this.shape_rect_rounded = this.localize('Rounded rectangle');
 
     this.processSuccess = '✔️\u00A0\u00A0# ' + this.localize('processed');
     this.processFailed = '⚠️\u00A0\u00A0' + this.localize('No text block is selected');
@@ -37,8 +42,17 @@ class StringConstants
   {
     if (this.userLocale == 'en')
       return phrase;
+     
+    var cache = CacheService.getScriptCache();
 
-    return LanguageApp.translate(phrase, 'en', this.userLocale);
+    var cacheKey = this.userLocale + '@' + phrase;
+    var cacheValue = cache.get(cacheKey);
+    if (cacheValue == null)
+    {
+      cacheValue = LanguageApp.translate(phrase, 'en', this.userLocale);
+      cache.put(cacheKey, cacheValue, 60*60*24);
+    }
+    return cacheValue;
   }
 
   getCodeLanguageName(id)
