@@ -9,7 +9,8 @@ const codeStyles = Object.freeze({
   //   }
   // }
 
-  dark: {
+  monokai: {
+    _name: "Dark",
     _backgroundColor: incapsulateColor(paletteMonokai.Background, 'color'),
     _default: {foregroundColor: incapsulateColor(paletteMonokai.Foreground)},
 
@@ -56,149 +57,54 @@ const codeStyles = Object.freeze({
     'italic': {italic: true},
   },
   coy: {
-    _backgroundColor: incapsulateColor(paletteCoy.Background, 'color'), //фон
-    _default: {foregroundColor: incapsulateColor(paletteCoy.Foreground)},// Цвет текста по умолчанию
+    _name: "Light",
+    _backgroundColor: incapsulateColor(paletteCoy.Background, 'color'),
+    _default: {foregroundColor: incapsulateColor(paletteCoy.Foreground)},
 
-    'comment': {foregroundColor: incapsulateColor(paletteCoy.Gray)},// комментарии
+    'comment': {foregroundColor: incapsulateColor(paletteCoy.Gray)},
     'prolog': 'comment',
     'doctype': 'comment',
     'cdata': 'comment',
     
-    'punctuation': {foregroundColor: incapsulateColor(paletteCoy.GrayLight)}, //Пунктуационные знаки
+    'punctuation': {foregroundColor: incapsulateColor(paletteCoy.GrayLight)},
     
-    'property': {foregroundColor: incapsulateColor(paletteCoy.Red)},//??
+    'property': {foregroundColor: incapsulateColor(paletteCoy.Red)},
     
     'boolean': 'number',
-    'number': {foregroundColor: incapsulateColor(paletteCoy.Red)},//цифры черные
+    'number': {foregroundColor: incapsulateColor(paletteCoy.Red)},
     'constant': 'number',
     'symbol': 'number',
-    'deleted': {foregroundColor: incapsulateColor(paletteCoy.Red)},//??
+    'deleted': {foregroundColor: incapsulateColor(paletteCoy.Red)},
 
     'selector': 'string',
-    'attr-name': {foregroundColor: incapsulateColor(paletteCoy.Green)},//??
-    'string': {foregroundColor: incapsulateColor(paletteCoy.Green)},// То, что в одинарных кавычках пишется
+    'attr-name': {foregroundColor: incapsulateColor(paletteCoy.Green)},
+    'string': {foregroundColor: incapsulateColor(paletteCoy.Green)},
     
     'char': 'number',
     'builtin': 'string',
-    'inserted': {foregroundColor: incapsulateColor(paletteCoy.Green)},//??
+    'inserted': {foregroundColor: incapsulateColor(paletteCoy.Green)},
     
 
-    'operator': {foregroundColor: incapsulateColor(paletteCoy.Brown)}, //равно, или, и 
+    'operator': {foregroundColor: incapsulateColor(paletteCoy.Brown)},
     'entity': 'operator',
-    'url': {foregroundColor: incapsulateColor(paletteCoy.Brown), underline: true}, //??
+    'url': {foregroundColor: incapsulateColor(paletteCoy.Brown), underline: true},
     
     'atrule': 'operator',
     'attr-value': {foregroundColor: incapsulateColor(paletteCoy.Blue)},
-    'keyword': {foregroundColor: incapsulateColor(paletteCoy.Blue)}, // if for и всякие ключевые слова
+    'keyword': {foregroundColor: incapsulateColor(paletteCoy.Blue)},
 
-    'function': {foregroundColor: incapsulateColor(paletteCoy.Green)}, //  названия функций 
-    'class-name': {foregroundColor: incapsulateColor(paletteCoy.Blue), italic: true}, //??
-    'namespace': {foregroundColor: incapsulateColor(paletteCoy.Green), bold: true}, //??
+    'function': {foregroundColor: incapsulateColor(paletteCoy.Green)},
+    'class-name': {foregroundColor: incapsulateColor(paletteCoy.Blue), italic: true},
+    'namespace': {foregroundColor: incapsulateColor(paletteCoy.Green), bold: true},
     'return-type': 'class-name',
 
-    'regex': {foregroundColor: incapsulateColor(paletteCoy.Orange)}, //??
+    'regex': {foregroundColor: incapsulateColor(paletteCoy.Orange)},
     'important': 'variable',
-    'variable': {foregroundColor: incapsulateColor(paletteCoy.Brown)}, //???
+    'variable': {foregroundColor: incapsulateColor(paletteCoy.Brown)},
 
     'bold': {bold: true},
     'italic': {italic: true},
   },
-  default: {
-    _backgroundColor: incapsulateColor(paletteMonokai.Foreground, 'color'), //фон
-    _default: {foregroundColor: incapsulateColor(paletteMonokai.Background)},// Цвет текста по умолчанию
-
-    'comment': {foregroundColor: incapsulateColor(paletteMonokai.Gray)},// комментарии
-    'prolog': 'comment',
-    'doctype': 'comment',
-    'cdata': 'comment',
-    
-    'punctuation': {foregroundColor: incapsulateColor(paletteMonokai.GrayLight)}, //Пунктуационные знаки
-    
-    'property': {foregroundColor: incapsulateColor(paletteMonokai.Blue)},//??
-    
-    'boolean': 'number',
-    'number': {foregroundColor: incapsulateColor(paletteMonokai.Background)},//цифры черные
-    'constant': 'number',
-    'symbol': 'number',
-    'deleted': {foregroundColor: incapsulateColor(paletteMonokai.Red)},//??
-
-    'selector': 'string',
-    'attr-name': {foregroundColor: incapsulateColor(paletteMonokai.Green)},//??
-    'string': {foregroundColor: incapsulateColor(paletteMonokai.Green)},// То, что в одинарных кавычках пишется
-    
-    'char': 'number',
-    'builtin': 'string',
-    'inserted': {foregroundColor: incapsulateColor(paletteMonokai.Green)},//??
-    
-
-    'operator': {foregroundColor: incapsulateColor(paletteMonokai.Gray)}, //равно, или, и 
-    'entity': 'operator',
-    'url': {foregroundColor: incapsulateColor(paletteMonokai.Blue), underline: true}, //??
-    
-    'atrule': 'operator',
-    'attr-value': {foregroundColor: incapsulateColor(paletteMonokai.Blue)},
-    'keyword': {foregroundColor: incapsulateColor(paletteMonokai.Red)}, // if for и всякие ключевые слова
-
-    'function': {foregroundColor: incapsulateColor(paletteMonokai.Green)}, //  названия функций 
-    'class-name': {foregroundColor: incapsulateColor(paletteMonokai.Red), italic: true}, //??
-    'namespace': {foregroundColor: incapsulateColor(paletteMonokai.Green), bold: true}, //??
-    'return-type': 'class-name',
-
-    'regex': {foregroundColor: incapsulateColor(paletteMonokai.Whitish)}, //??
-    'important': 'variable',
-    'variable': {foregroundColor: incapsulateColor(paletteMonokai.OrangeLight)}, //???
-
-    'bold': {bold: true},
-    'italic': {italic: true},
-  },
-  TomorrowNight: {
-    _backgroundColor: incapsulateColor(paletteMonokai.Background, 'color'),
-    _default: {foregroundColor: incapsulateColor(paletteMonokai.Foreground)},
-
-    'comment': {foregroundColor: incapsulateColor(paletteMonokai.Gray)},
-    'prolog': 'comment',
-    'doctype': 'comment',
-    'cdata': 'comment',
-    
-    'punctuation': {foregroundColor: incapsulateColor(paletteMonokai.GrayLight)},
-    
-    'property': {foregroundColor: incapsulateColor(paletteMonokai.Blue)},
-    'tag': {foregroundColor: incapsulateColor(paletteMonokai.Red)},
-    'boolean': 'number',
-    'number': {foregroundColor: incapsulateColor(paletteMonokai.Purple)},
-    'constant': 'number',
-    'symbol': 'number',
-    'deleted': {foregroundColor: incapsulateColor(paletteMonokai.Red)},
-
-    'selector': 'string',
-    'attr-name': {foregroundColor: incapsulateColor(paletteMonokai.Green)},
-    'string': {foregroundColor: incapsulateColor(paletteMonokai.Green)},
-    'char': 'number',
-    'builtin': 'string',
-    'inserted': {foregroundColor: incapsulateColor(paletteMonokai.Green)},
-
-    'operator': {foregroundColor: incapsulateColor(paletteMonokai.Blue)},
-    'entity': 'operator',
-    'url': {foregroundColor: incapsulateColor(paletteMonokai.Blue), underline: true},
-    
-    'atrule': 'operator',
-    'attr-value': {foregroundColor: incapsulateColor(paletteMonokai.Yellow)},
-    'keyword': {foregroundColor: incapsulateColor(paletteMonokai.Purple)},
-
-    'function': {foregroundColor: incapsulateColor(paletteMonokai.Green)},
-    'class-name': {foregroundColor: incapsulateColor(paletteMonokai.Green), italic: true},
-    'namespace': {foregroundColor: incapsulateColor(paletteMonokai.Green), bold: true},
-    'return-type': 'class-name',
-
-    'regex': {foregroundColor: incapsulateColor(paletteMonokai.Whitish)},
-    'important': 'variable',
-    'variable': {foregroundColor: incapsulateColor(paletteMonokai.OrangeLight)},
-
-    'bold': {bold: true},
-    'italic': {italic: true},
-  },
-
-  adaptive: {}
 });
 
 function incapsulateColor(col, colorKey='opaqueColor')
@@ -218,7 +124,7 @@ function createStylesDropdown()
 
   Object.keys(codeStyles)
   .forEach(styleId => selectionInput
-    .addItem(str.getCodeStyleName(styleId), styleId, styleId == selectedStyle)
+    .addItem(str.localize(codeStyles[styleId]._name), styleId, styleId == selectedStyle)
     .setOnChangeAction(CardService.newAction().setFunctionName('onStyleChanged'))
   );
 
@@ -232,7 +138,7 @@ function onStyleChanged(e)
 
 function getStyle(docScope = '')
 {
-  return getProp('style', 'dark', docScope);
+  return getProp('style', 'monokai', docScope);
 }
 
 function setStyle(styleId, docScope = '')

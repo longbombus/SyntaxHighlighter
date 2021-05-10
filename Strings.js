@@ -58,11 +58,6 @@ class StringConstants
       ? this.languageNames[id]
       : id.charAt(0).toUpperCase() + id.slice(1);
   }
-  
-  getCodeStyleName(id)
-  {
-    return id.charAt(0).toUpperCase() + id.slice(1);
-  }
 }
 
 const str = new StringConstants();
