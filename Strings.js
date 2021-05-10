@@ -22,15 +22,12 @@ class StringConstants
     this.font = this.localize('Font');
     
     this.shape = this.localize('Shape');
-    this.shape_none = this.localize('None');
-    this.shape_rect = this.localize('Rectangle');
-    this.shape_rect_rounded = this.localize('Rounded rectangle');
 
     this.processSuccess = '✔️\u00A0\u00A0# ' + this.localize('processed');
     this.processFailed = '⚠️\u00A0\u00A0' + this.localize('No text block is selected');
 
-    this.saveUserDefault = this.localize('Use as my default');
-    this.saveUserDefaultHint = this.localize('This preset will be used for new documents');
+    this.saveUserDefault = this.localize('Save as default');
+    this.saveUserDefaultHint = this.localize('Selected options will be used for new documents');
 
     // src: https://prismjs.com/plugins/show-language/
     this.languageNames = {
