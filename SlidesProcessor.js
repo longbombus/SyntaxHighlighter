@@ -17,7 +17,8 @@ class SlidesProcessor
     this.options = {
       language: getLanguage(),
       style: getStyle(),
-      font: getFont()
+      font: getFont(),
+      shape: getShape(),
     }
 
     this.codeStyle = codeStyles[this.options.style];
@@ -27,33 +28,73 @@ class SlidesProcessor
       switch (e.getPageElementType())
       {
         case SlidesApp.PageElementType.SHAPE:
-          let shape = e.asShape();
+          var id = e.getObjectId();
+          let text = e.asShape().getText();
+          var textString = text.asString();
+          if (textString.endsWith('\n'))
+            textString = textString.substr(0, textString.length - 1);
+          
+          if (this.options.shape)
+          {
+            if (e.asShape().getShapeType() != this.options.shape)
+            {
+              id = guid();
+              let transform = e.getTransform();
+
+              updates.push({
+                createShape: {
+                  objectId: id,
+                  shapeType: this.options.shape,
+                  elementProperties: {
+                    pageObjectId: e.getParentPage().getObjectId(),
+                    size: {
+                      width: { magnitude: e.getWidth(), unit: 'PT' },
+                      height: { magnitude: e.getHeight(), unit: 'PT' },
+                    },
+                    transform: {
+                      scaleX: 1, shearX: 0,
+                      scaleY: 1, shearY: 0,
+                      translateX: transform.getTranslateX(),
+                      translateY: transform.getTranslateY(),
+                      unit: 'PT'
+                    }
+                  },
+                }
+              });
+              updates.push({
+                insertText: {
+                  objectId: id,
+                  text: textString,
+                  insertionIndex: 0
+                }
+              });
+              updates.push({
+                deleteObject: { objectId: e.getObjectId() }
+              });
+            }
+          }
+
           updates.push({
             updateShapeProperties:
             {
-              objectId: e.getObjectId(),
+              objectId: id,
               shapeProperties: {
                 shapeBackgroundFill: {
-                  propertyState: 'RENDERED',
-                  solidFill: Object.assign(
-                    {alpha: 1},
-                    codeStyles[this.options.style]._backgroundColor
-                  )
+                  propertyState: this.options.shape ? 'RENDERED' : 'NOT_RENDERED',
+                  solidFill: Object.assign({alpha: 1}, this.codeStyle._backgroundColor)
                 }
               },
               fields: 'shapeBackgroundFill'
             }
           });
 
-
-          let code = shape.getText();
-          if (code.isEmpty() || code.asString().trim().length == 0)
+          if (text.isEmpty() || textString.length == 0)
             break;
 
           updates.push({
             updateParagraphStyle:
             {
-              objectId: e.getObjectId(),
+              objectId: id,
               style: {
                 indentStart: {magnitude: 0, unit: 'PT'},
                 indentEnd: {magnitude: 0, unit: 'PT'},
@@ -67,9 +108,9 @@ class SlidesProcessor
           });
 
           this.generateHighlightRequests(
-            code.asString(),
+            textString,
             0,
-            e.getObjectId(),
+            id,
             updates
           );
           break;

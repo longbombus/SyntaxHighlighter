@@ -26,10 +26,11 @@
         "primaryColor": "#36424a",
         "secondaryColor": "#42a1f5"
       },
-      "logoUrl": "https://assets.gitlab-static.net/uploads/-/system/project/avatar/23725124/Triangle__2_.png",
+      "logoUrl": "https://lh3.googleusercontent.com/-EHhPRFeooV4/YCy7lf1uiRI/AAAAAAAAA-0/roDOd0TFP-YbirddoW_cr-waDUULr0OZQCLcBGAsYHQ/s400/icon128.png",
       "name": "Syntax Highlighter",
       "openLinkUrlPrefixes": [
-        "https://script.google.com/a/google.com/d/"
+        "https://script.google.com/a/google.com/d/",
+        "https://longbombus.tk/"
       ],
       "useLocaleFromApp": true
     },
