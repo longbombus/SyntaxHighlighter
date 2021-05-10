@@ -13,6 +13,19 @@ const paletteMonokai = Object.freeze({
   OrangeLight: toOpaqueColor("#E69F66"),
 });
 
+const paletteCoy = Object.freeze({
+  Background: toOpaqueColor("#fdfdfd"),
+  Foreground: toOpaqueColor("#272822"),
+  Gray: toOpaqueColor("#7D8B99"),
+  GrayLight: toOpaqueColor("#7D8B99"),
+  Orange: toOpaqueColor("#e90"),
+  Brown: toOpaqueColor("#a67f59"),
+  Red: toOpaqueColor("#c92c2c"),
+  Blue: toOpaqueColor("#1990b8"),
+  Green: toOpaqueColor("#2f9c0a"),
+});
+
+
 const adaptive = Object.freeze({
   Background: toOpaqueColor('BACKGROUND1'),
   Foreground: toOpaqueColor('TEXT1'),

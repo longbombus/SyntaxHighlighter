@@ -9,7 +9,8 @@ const codeStyles = Object.freeze({
   //   }
   // }
 
-  dark: {
+  monokai: {
+    _name: "Dark",
     _backgroundColor: incapsulateColor(paletteMonokai.Background, 'color'),
     _default: {foregroundColor: incapsulateColor(paletteMonokai.Foreground)},
 
@@ -55,8 +56,55 @@ const codeStyles = Object.freeze({
     'bold': {bold: true},
     'italic': {italic: true},
   },
+  coy: {
+    _name: "Light",
+    _backgroundColor: incapsulateColor(paletteCoy.Background, 'color'),
+    _default: {foregroundColor: incapsulateColor(paletteCoy.Foreground)},
 
-  adaptive: {}
+    'comment': {foregroundColor: incapsulateColor(paletteCoy.Gray)},
+    'prolog': 'comment',
+    'doctype': 'comment',
+    'cdata': 'comment',
+    
+    'punctuation': {foregroundColor: incapsulateColor(paletteCoy.GrayLight)},
+    
+    'property': {foregroundColor: incapsulateColor(paletteCoy.Red)},
+    
+    'boolean': 'number',
+    'number': {foregroundColor: incapsulateColor(paletteCoy.Red)},
+    'constant': 'number',
+    'symbol': 'number',
+    'deleted': {foregroundColor: incapsulateColor(paletteCoy.Red)},
+
+    'selector': 'string',
+    'attr-name': {foregroundColor: incapsulateColor(paletteCoy.Green)},
+    'string': {foregroundColor: incapsulateColor(paletteCoy.Green)},
+    
+    'char': 'number',
+    'builtin': 'string',
+    'inserted': {foregroundColor: incapsulateColor(paletteCoy.Green)},
+    
+
+    'operator': {foregroundColor: incapsulateColor(paletteCoy.Brown)},
+    'entity': 'operator',
+    'url': {foregroundColor: incapsulateColor(paletteCoy.Brown), underline: true},
+    
+    'atrule': 'operator',
+    'attr-value': {foregroundColor: incapsulateColor(paletteCoy.Blue)},
+    'keyword': {foregroundColor: incapsulateColor(paletteCoy.Blue)},
+
+    'function': {foregroundColor: incapsulateColor(paletteCoy.Green)},
+    'class-name': {foregroundColor: incapsulateColor(paletteCoy.Blue), italic: true},
+    'namespace': {foregroundColor: incapsulateColor(paletteCoy.Green), bold: true},
+    'return-type': 'class-name',
+
+    'regex': {foregroundColor: incapsulateColor(paletteCoy.Orange)},
+    'important': 'variable',
+    'variable': {foregroundColor: incapsulateColor(paletteCoy.Brown)},
+
+    'bold': {bold: true},
+    'italic': {italic: true},
+  },
 });
 
 function incapsulateColor(col, colorKey='opaqueColor')
@@ -76,7 +124,7 @@ function createStylesDropdown()
 
   Object.keys(codeStyles)
   .forEach(styleId => selectionInput
-    .addItem(str.getCodeStyleName(styleId), styleId, styleId == selectedStyle)
+    .addItem(str.localize(codeStyles[styleId]._name), styleId, styleId == selectedStyle)
     .setOnChangeAction(CardService.newAction().setFunctionName('onStyleChanged'))
   );
 
@@ -90,7 +138,7 @@ function onStyleChanged(e)
 
 function getStyle(docScope = '')
 {
-  return getProp('style', 'dark', docScope);
+  return getProp('style', 'monokai', docScope);
 }
 
 function setStyle(styleId, docScope = '')
