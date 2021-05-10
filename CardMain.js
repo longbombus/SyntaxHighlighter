@@ -3,19 +3,25 @@ function createCardMain(event)
   var builder = CardService.newCardBuilder()
     .setName('main');
 
-  let optionsSection = CardService.newCardSection()
+  builder.addSection(
+    CardService.newCardSection()
     .addWidget(createLanguagesDropdown())
     .addWidget(createStylesDropdown())
-    .addWidget(createFontsDropdown());
+    .addWidget(createFontsDropdown())
+  );
 
-  builder.addSection(optionsSection);
-  
+  builder.addSection(
+    CardService.newCardSection()
+    //TODO: add after 3 widgets .setCollapsible(true).setHeader("Additional")
+    .addWidget(createShapesDropdown())
+  );
+
   let applyAction = CardService.newAction()
     .setFunctionName('processor.highlight');
 
   builder.addSection(
     CardService.newCardSection()
-    .addWidget(      
+    .addWidget(
       CardService.newTextButton()
       .setOnClickAction(applyAction)
       .setText(str.process)
@@ -33,6 +39,18 @@ function createCardMain(event)
     CardService.newCardAction()
     .setOnClickAction(CardService.newAction().setFunctionName('saveOptions'))
     .setText(str.saveUserDefault)
+  );
+
+
+  builder.addCardAction(
+    CardService.newCardAction()
+    .setOpenLink(
+      CardService.newOpenLink()
+      .setUrl("https://longbombus.tk/Syntax-Highlighter-12396b21a725494cbafc8f90a5f55597")
+      .setOpenAs(CardService.OpenAs.FULL_SIZE)
+      .setOnClose(CardService.OnClose.NOTHING)
+    )
+    .setText(str.help)
   );
 
   return builder.build();

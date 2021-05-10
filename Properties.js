@@ -1,3 +1,5 @@
+let _noneStringCode = '¯'
+
 /**
  * @arg {String} key
  * @arg {String} value
@@ -14,7 +16,7 @@ function setProp(key, value, docScope = '')
   else
     props = PropertiesService.getUserProperties();
 
-  props.setProperty(key, value);
+  props.setProperty(key, value ? value : _noneStringCode );
 }
 
 /**
@@ -28,9 +30,9 @@ function getProp(key, defaultValue = null, docScope = '')
   {
     let localValue = PropertiesService.getDocumentProperties().getProperty(key + docScope);
     if (localValue != null)
-      return localValue;
+      return localValue === _noneStringCode ? '' : localValue;
   }
   
   let globalValue = PropertiesService.getUserProperties().getProperty(key);
-  return globalValue != null ? globalValue : defaultValue;
+  return globalValue ? (globalValue === _noneStringCode ? '' : globalValue) : defaultValue;
 }

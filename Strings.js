@@ -20,12 +20,14 @@ class StringConstants
     this.language = this.localize('Programming language');
     this.style = this.localize('Style');
     this.font = this.localize('Font');
+    
+    this.shape = this.localize('Shape');
 
     this.processSuccess = '✔️\u00A0\u00A0# ' + this.localize('processed');
     this.processFailed = '⚠️\u00A0\u00A0' + this.localize('No text block is selected');
 
-    this.saveUserDefault = this.localize('Use as my default');
-    this.saveUserDefaultHint = this.localize('This preset will be used for new documents');
+    this.saveUserDefault = this.localize('Save as default');
+    this.saveUserDefaultHint = this.localize('Selected options will be used for new documents');
 
     // src: https://prismjs.com/plugins/show-language/
     this.languageNames = {
@@ -37,8 +39,17 @@ class StringConstants
   {
     if (this.userLocale == 'en')
       return phrase;
+     
+    var cache = CacheService.getScriptCache();
 
-    return LanguageApp.translate(phrase, 'en', this.userLocale);
+    var cacheKey = this.userLocale + '@' + phrase;
+    var cacheValue = cache.get(cacheKey);
+    if (cacheValue == null)
+    {
+      cacheValue = LanguageApp.translate(phrase, 'en', this.userLocale);
+      cache.put(cacheKey, cacheValue, 60*60*24);
+    }
+    return cacheValue;
   }
 
   getCodeLanguageName(id)
